@@ -1,58 +1,32 @@
 <template>
  <div class="container-fluid">
-   <nav class="navbar navbar-light bg-light">
+   <nav class="navbar navbar-dark bg-dark">
     <span class="navbar-brand mb-0 h1">Participants</span>
   </nav>
   <div class="app-content">
-    <div class="app-list">
-      <h1>List</h1>
-      <div v-if="participants.length > 0" class="app-list-constent">
-        <div v-for="participant in participants" v-bind:key="participant.id">
-          {{ participant.name }} {{ participant.surname}} 
-          <button v-on:click="onRemove(participant)" class="btn btn-danger" type="button">Remove</button>
-        </div>
-      </div>
-      <div class="alert alert-warning" role="alert" v-else>
-        Noone here :c 
-      </div>
-    </div>
-    <div class="app-add-form">
-      <form v-on:submit.prevent="onSubmit()">
-        <h1>Add participant</h1>
-        <div class="form-group">
-          <label for="participantName">Name</label>
-          <input v-model="newParticipantName" type="text" class="form-control" id="participantName" placeholder="Fill name">
-        </div>
-        <div class="form-group">
-          <label for="participantSurname">Surname</label>
-          <input v-model="newParticipantSurname" type="text" class="form-control" id="participantSurname" placeholder="Fill surname">
-        </div>
-        <button class="btn btn-info" type="submit">Submit</button>
-      </form>
-    </div>
+    <participants-list v-bind:participants="participants" v-on:remove-participant="onRemove($event)"></participants-list>
+    <participant-add-form v-on:addParticipant="addParticipant($event)"></participant-add-form>
   </div>
  </div>
 </template>
 
 <script>
+  import ParticipantsList from './components/ParticipantsList.vue';
+  import ParticipantAddForm from './components/ParticipantAddForm.vue';
+
   export default {
+    components: {
+      ParticipantsList,
+      ParticipantAddForm
+    },
     data: function () {
       return {
         participants: [],
-        newParticipantName: '',
-        newParticipantSurname: '',
       }
     },
     methods: {
-      onSubmit: function (){
-        const newParticipant = {
-          name: this.newParticipantName,
-          surname: this.newParticipantSurname,
-          id: Math.random(),
-        }
+      addParticipant: function(newParticipant){
         this.participants.push(newParticipant);
-        this.newParticipantSurname = '';
-        this.newParticipantName = '';
       },
       onRemove: function (participantToRemove){
         this.participants = this.participants.filter((participant) => {
@@ -71,5 +45,12 @@
 
 .app-content {
   margin: 30px;
+}
+
+h1 {
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-left: 2px solid #666;
+    color: #666;
 }
 </style>
