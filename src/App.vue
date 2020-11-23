@@ -1,6 +1,6 @@
 <template>
  <div class="container-fluid">
-   <nav class="navbar navbar-dark bg-dark">
+   <nav class="navbar navbar-light bg-light">
     <span class="navbar-brand mb-0 h1">Participants</span>
   </nav>
   <div class="app-content">
@@ -45,12 +45,5 @@
 
 .app-content {
   margin: 30px;
-}
-
-h1 {
-    background-color: #f7f7f7;
-    padding: 1rem;
-    border-left: 2px solid #666;
-    color: #666;
 }
 </style>
