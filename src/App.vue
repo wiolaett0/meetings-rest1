@@ -24,6 +24,11 @@
         participants: [],
       }
     },
+	mounted() {
+ this.$http.get('participants').then(response => {
+ this.people = response.body;
+ });
+},
     methods: {
       addParticipant: function(newParticipant){
         this.participants.push(newParticipant);

@@ -1,1 +1,14 @@
-{}
+{
+    "name": "me/meetings-rest",
+    "authors": [
+        {
+            "name": "wiolaett0",
+            "email": "misswiol@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3",
+        "ext-json": "*",
+        "ext-sqlite3": "*"
+    }
+}
