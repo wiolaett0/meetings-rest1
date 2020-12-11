@@ -18,11 +18,14 @@ export default {
     data: function (){
         return {}
     },
+	
     props: ['participants'],
     methods: {
         onRemove: function (participant) {
             this.$emit('remove-participant', participant);
+			
         }
+		
     }
 }
 </script>
